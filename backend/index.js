@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 // const cors = require("cors");
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // const path = require("path");
 // const auth = require("./routes/auth");
 // const list = require("./routes/list");
@@ -24,11 +24,12 @@ app.get('/', (req, res)=>{
   res.send("Welcome onboard")
 })
 
-// mongoose.connect("mongodb+srv://olufunmilayoagboola:education2603@cluster0.groczbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-// .then(()=>{
-//     console.log("Connection Successful!")
+mongoose.connect("mongodb+srv://olufunmilayoagboola:education@cluster0.groczbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+.then(()=>{
+    console.log("Connection Successful!")
+    
 
-// })
-// .catch(()=>{
-//     console.log("Connection Failed")
-// })
+})
+.catch(()=>{
+    console.log("Connection Failed")
+})
