@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const User = require("../models/user");
-const List = require("../models/list");
+const User = require("../models/user.js");
+const List = require("../models/list.js");
 
 //create
 router.post("/addTask", async (req, res) => {
@@ -16,7 +16,10 @@ router.post("/addTask", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+
 });
+
+
 
 //update
 router.put("/updateTask/:id", async (req, res) => {
@@ -46,7 +49,7 @@ router.delete("/deleteTask/:id", async (req, res) => {
   }
 });
 
-//getTska
+//getTask
 router.get("/getTasks/:id", async (req, res) => {
   try {
     const list = await List.find({ user: req.params.id }).sort({
