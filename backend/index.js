@@ -7,7 +7,8 @@ app.use(express.urlencoded({extended: false}))
 const auth = require("./routes/auth.js");
 const list = require("./routes/list.js");
 app.use(express.json());
-app.use(cors());
+app.use(cors())
+const Usermode = require('./models/user.js')
 
 
 app.use("/api", auth)
