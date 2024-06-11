@@ -1,5 +1,5 @@
 import React from "react";
-import "./home.css";
+import "./Home.css";
 const Home = () => {
   return (
     <div className="home d-flex justify-content-center align-items-center">

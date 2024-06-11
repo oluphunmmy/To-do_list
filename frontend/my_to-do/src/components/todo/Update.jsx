@@ -19,7 +19,7 @@ const Update = ({ display, update }) => {
   };
   const submit = async () => {
     await axios
-      .put(`${window.location.origin}/api/v2/updateTask/${update._id}`, Inputs)
+      .put(`http://localhost:3003/api/todo/${id}`, Inputs)
       .then((response) => {
         toast.success(response.data.message);
       });
