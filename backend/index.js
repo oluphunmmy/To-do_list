@@ -3,21 +3,16 @@ const app = express()
 const cors = require("cors");
 const mongoose = require('mongoose');
 app.use(express.urlencoded({extended: false}))
-// const path = require("path");
-const auth = require("./routes/auth.js");
-const list = require("./routes/list.js");
+const listRouter = require("./routes/list.route.js");
+const userRouter = require("./routes/user.route.js")
 app.use(express.json());
 app.use(cors())
-const Usermode = require('./models/user.js')
+const Usermode = require('./models/ToDomodel.js')
 
 
-app.use("/api", auth)
-app.use("/api", list)
+app.use("/api/auth", userRouter)
+app.use("/api/todo", listRouter)
 
-// app.get("/", (req, res) => {
-//   app.use(express.static(path.resolve(__dirname, "frontend", "build")));
-//   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-// });
 
 app.listen(3003, () => {
   console.log("Server Started at 3003");
@@ -27,7 +22,7 @@ app.get('/', (req, res)=>{
   res.send("Welcome onboard")
 })
 
-mongoose.connect("mongodb+srv://olufunmilayoagboola:education@cluster0.groczbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://olufunmilayoagboola:OPOazC3Nc4hXm65a@cluster0.groczbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
     console.log("Connection Successful!")
     
