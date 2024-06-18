@@ -22,7 +22,7 @@ app.get('/', (req, res)=>{
   res.send("Welcome onboard")
 })
 
-mongoose.connect("mongodb+srv://olufunmilayoagboola:OPOazC3Nc4hXm65a@cluster0.groczbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://olufunmilayoagboola:3pN02IpmeMWJFSdY@cluster0.groczbr.mongodb.net/To-do_list?retryWrites=true&w=majority&appName=Cluster0")
 .then(()=>{
     console.log("Connection Successful!")
     

@@ -1,8 +1,8 @@
 const Todo = require('../models/ToDomodel.js')
+
 //Create a new todo
 const createTodos = async(req, res)=>{
-
-      
+  
   try {
 
         if (
@@ -11,14 +11,13 @@ const createTodos = async(req, res)=>{
               !req.body.deadline ||
               !req.body.status
         ){
-
               return res.status(400).send({
                     message: "Send all required feilds: task, description,deadline, status"
               })
         }
 
-        const todo = await Todo.create(req.body)
-        // console.log("Saved Successfully...");
+        const todo = await Todo.create(req.body);
+         console.log("Saved Successfully...");
         res.status(200).json(todo)
         
   } catch (error) {

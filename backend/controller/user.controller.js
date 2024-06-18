@@ -1,4 +1,4 @@
-const Usermod = require('../models/UserModel.js')
+const Usermod = require('../models/usermodel.js')
 
 const signin = async (req, res) =>{
     try{
@@ -25,8 +25,8 @@ const signin = async (req, res) =>{
 const signup = async (req, res) =>{
     try {
         if (
-            !req.body.firstname ||
             !req.body.lastname ||
+            !req.body.firstname ||
             !req.body.email ||
             !req.body.password
         ){
@@ -47,8 +47,19 @@ const signup = async (req, res) =>{
         }
 }
 
+const forgotpassword = async (req, res) =>{
+
+
+}
+
+const verifyemail = async () =>{
+
+}
+
 module.exports = {
     signin,
-    signup
+    signup,
+    forgotpassword,
+    verifyemail
     
 }
