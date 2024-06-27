@@ -1,14 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: {
-    hmr: {
-      overlay: false,
-      port: 5173,
-      
-    },
+  esbuild: {
+    loader: 'jsx',
+    include: /src\/.*\.js$/, // Process all .js files in the src directory
   },
 });

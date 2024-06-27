@@ -23,7 +23,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Phuncody
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -61,7 +61,7 @@ const [email, setEmail] = useState("")
       .then(() => {
         toast.success("User signed in Successfully")
         setTimeout(() => {
-          navigate('/home');
+          navigate('/todo');
 
         }, 2000)
 

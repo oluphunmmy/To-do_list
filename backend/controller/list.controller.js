@@ -1,32 +1,44 @@
 const Todo = require('../models/ToDomodel.js')
 
 //Create a new todo
-const createTodos = async(req, res)=>{
-  
+const createTodos = async (req, res) => {
   try {
+    const { task, description, deadline, status } = req.body;
 
-        if (
-              !req.body.task ||
-              !req.body.description ||
-              !req.body.deadline ||
-              !req.body.status
-        ){
-              return res.status(400).send({
-                    message: "Send all required feilds: task, description,deadline, status"
-              })
-        }
+    // Log the request body for debugging
+    console.log(req.body);
 
-        const todo = await Todo.create(req.body);
-         console.log("Saved Successfully...");
-        res.status(200).json(todo)
-        
+    // Check for missing fields and return specific error messages
+    if (!task) {
+      return res.status(400).send({
+        message: "The 'task' field is required."
+      });
+    }
+    if (!description) {
+      return res.status(400).send({
+        message: "The 'description' field is required."
+      });
+    }
+    if (!deadline) {
+      return res.status(400).send({
+        message: "The 'deadline' field is required."
+      });
+    }
+    if (!status) {
+      return res.status(400).send({
+        message: "The 'status' field is required."
+      });
+    }
+
+    const todo = await Todo.create({ task, description, deadline, status });
+    res.status(201).json(todo); // 201 for resource creation
+
   } catch (error) {
-        console.log(error)
-        res.status(500).json({message: error.message})
+    console.error(error);
+    res.status(500).json({ message: error.message });
   }
-  
-
 }
+
 
 const getTodos = async(req, res)=>{
   try {

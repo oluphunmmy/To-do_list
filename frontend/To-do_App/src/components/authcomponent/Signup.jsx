@@ -20,7 +20,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        phuncody
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -42,21 +42,23 @@ const Signup = ()=> {
   
 
   const handleSubmit = (event) => {
+    event.preventDefault();
 
-    if(!firstname || !lastname || !email || !password){
+
+    if(!lastname || !firstname || !email || !password){
       toast.error('Fill up all details')
       return
 
     }
     const data = {
-      firstname: firstname,
-      lastname: lastname,
+      firstname: lastname,
+      lastname: firstname,
       email: email,
       password: password
     }
 
 
-    axios.post('http://localhost:3001/api/book/register', data)
+    axios.post('http://localhost:3003/api/auth/register', data)
     .then(()=>{
       toast.success("User signed up Successfully")
       setTimeout(()=>{
@@ -76,7 +78,7 @@ const Signup = ()=> {
   return (
 
     <div>
-    <ThemeProvider theme={defaultTheme}>
+  
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -169,8 +171,6 @@ const Signup = ()=> {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-
-    </ThemeProvider>
     
     <ToastContainer/>
     </div>
