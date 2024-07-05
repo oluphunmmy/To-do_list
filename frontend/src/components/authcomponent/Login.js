@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+ import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -17,7 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -58,7 +58,9 @@ const [email, setEmail] = useState("")
 
     }
     axios.post('http://localhost:3003/api/auth/login', data)
-      .then(() => {
+      .then((response) => {
+        console.log(response, "user credentials")
+        localStorage.setItem('token', response.data.token)
         toast.success("User signed in Successfully")
         setTimeout(() => {
           navigate('/todo');

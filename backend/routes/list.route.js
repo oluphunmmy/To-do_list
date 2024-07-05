@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const {verifyJWT} = require('./../controller/user.controller.js')
 
 const {
   createTodos,
@@ -10,9 +11,9 @@ const {
 
 const router = Router();
 
-router.post("/", createTodos)
-router.get("/", getTodos)
-router.get("/:id", getTodo)
+router.post("/", verifyJWT, createTodos)
+router.get("/", verifyJWT, getTodos)
+router.get("/:id", verifyJWT, getTodo)
 router.put("/:id", updateToDo)
 router.delete("/:id", deleteToDo)
 

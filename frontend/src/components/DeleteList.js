@@ -10,20 +10,32 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const DeleteTodos = () => {
 
+    
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate()
+    const token = localStorage.getItem('token')
 
     const handleDeleteYes = () =>{
-        setLoading(true)
-        axios.delete(`http://localhost:3003/api/todo/${id}`)
-        .then((res)=>{
+    
+        // setLoading(true)
+        if (!token) {
+            toast.error('Authorization required. Please login.');
+            return;
+        }
+
+        const headers = {
+            Authorization: `Bearer ${token}`
+        }
+        axios.delete(`http://localhost:3003/api/todos/${id}`, { headers })
+        .then((res)=> {
             console.log(res.data.message);
             toast.success("Deleted Successfully!")
             setTimeout(()=>{
                 navigate('/todo')
                 
             }, 1000)
+            
         })
         .catch((error)=>{
             setLoading(false)
@@ -32,7 +44,7 @@ const DeleteTodos = () => {
     }
     const handleDeleteNo = () =>{
         setLoading(true);
-        navigate('/')
+        navigate('/todo')
     }
 
 
@@ -65,3 +77,7 @@ const DeleteTodos = () => {
   )
 }
 export default DeleteTodos
+            
+            
+            
+        

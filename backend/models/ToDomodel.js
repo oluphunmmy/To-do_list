@@ -20,6 +20,11 @@ const toDoSchema = new mongoose.Schema({
     require: true
   },
 
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    require: true
+}
+
 }, 
 {timestamps: true }
 );
